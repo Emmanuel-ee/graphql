@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { formatDate } from "../lib/formatters";
 import { useState, useEffect } from "react";
 import { getJob } from "../lib/qraphql/queries";
-// import { jobs } from "../lib/fake-data";
 
 function JobPage() {
   const { jobId } = useParams();
@@ -15,7 +14,7 @@ function JobPage() {
   if (!job) {
     return <div>Loading...</div>;
   }
-  // const job = jobs.find((job) => job.id === jobId);
+
   console.log("[JobPage] job:", job);
   return (
     <div>
