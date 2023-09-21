@@ -6,18 +6,8 @@ export const resolvers = {
   },
 
   Job: {
-    company: (job) => {
-      return getCompany(job.companyId);
-      // return {
-      //     id: 'test-id',
-      //     name: 'my-company'
-      // }
-    },
-    date: (job) => {
-      //   console.log("resolving date for job", job);
-      //   return "2022-12-31";
-      return toIsoDate(job.createdAt);
-    },
+    company: (job) => getCompany(job.companyId),
+    date: (job) => toIsoDate(job.createdAt),
   },
 };
 
