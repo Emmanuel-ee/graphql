@@ -1,10 +1,14 @@
 type Query {
     jobs: [Job!]
 }
-
+#regular comment example
+"""
+Represents a job add posted to our board.
+"""
 type Job {
     id: ID!
     date: String!
+    """The __date__ when the Job was published, in ISO-8601 format. E.g. `2022-12-31`. """
     title: String!
     description: String
 }
