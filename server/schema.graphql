@@ -1,14 +1,23 @@
 type Query {
-    jobs: [Job!]
+  jobs: [Job!]
+}
+
+type Company {
+  id: ID!
+  name: String!
+  description: String
 }
 #regular comment example
 """
 Represents a job add posted to our board.
 """
 type Job {
-    id: ID!
-    date: String!
-    """The __date__ when the Job was published, in ISO-8601 format. E.g. `2022-12-31`. """
-    title: String!
-    description: String
+  id: ID!
+  date: String!
+  """
+  The __date__ when the Job was published, in ISO-8601 format. E.g. `2022-12-31`.
+  """
+  title: String!
+  company: Company!
+  description: String
 }
