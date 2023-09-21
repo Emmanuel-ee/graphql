@@ -1,0 +1,7 @@
+schema {
+    query: Query
+} #This is a default setting and does  ot need to be specified.
+
+type Query {
+    greeting: String
+}
