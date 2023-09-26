@@ -29,12 +29,12 @@ export const resolvers = {
   },
 
   Mutation: {
-    createJob: (_root, { input: { title, description } }, { auth }) => {
-      if (!auth) {
+    createJob: (_root, { input: { title, description } }, { user }) => {
+      if (!user) {
         throw unauthorizedError("Missing authentication");
       }
-      const companyId = "FjcJCHJALA4i"; // TODO set based on user
-      return createJob({ companyId, title, description });
+      // console.log('[createJob] auth:', user)
+      return createJob({ companyId: user.companyId, title, description });
     },
 
     deleteJob: (_root, { id }) => deleteJob(id),
