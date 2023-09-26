@@ -30,7 +30,7 @@ export async function createJob({ companyId, title, description }) {
 export async function deleteJob(id, companyId) {
   const job = await getJobTable().first().where({ id, companyId });
   if (!job) {
-    return null
+    return null;
   }
   await getJobTable().delete().where({ id });
   return job;
@@ -39,7 +39,7 @@ export async function deleteJob(id, companyId) {
 export async function updateJob({ id, companyId, title, description }) {
   const job = await getJobTable().first().where({ id, companyId });
   if (!job) {
-    return null
+    return null;
   }
   const updatedFields = { title, description };
   await getJobTable().update(updatedFields).where({ id });
