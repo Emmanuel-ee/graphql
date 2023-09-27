@@ -4,9 +4,9 @@ import { GraphQLClient } from "graphql-request";
 const client = new GraphQLClient("http://localhost:9000/graphql");
 
 const apolloClient = new ApolloClient({
-  uri: 'http://localhost:9000/graphql',
+  uri: "http://localhost:9000/graphql",
   cache: new InMemoryCache(),
-})
+});
 export async function getCompany(id) {
   const query = gql`
     query companyById($id: ID!) {
@@ -22,8 +22,11 @@ export async function getCompany(id) {
       }
     }
   `;
-  const { company } = await client.request(query, { id });
-  return company;
+  const { data } = await apolloClient.query({
+    query,
+    variables: { id },
+  });
+  return data.company;
 }
 
 export async function getJob(id) {
@@ -41,8 +44,12 @@ export async function getJob(id) {
       }
     }
   `;
-  const { job } = await client.request(query, { id });
-  return job;
+
+  const { data } = await apolloClient.query({
+    query,
+    variables: { id },
+  });
+  return data.job;
 }
 
 export async function getJobs() {
@@ -59,6 +66,6 @@ export async function getJobs() {
       }
     }
   `;
-  const { jobs } = await client.request(query);
-  return jobs;
+  const { data } = await apolloClient.query({ query });
+  return data.jobs;
 }
