@@ -1,7 +1,12 @@
-import { GraphQLClient, gql } from "graphql-request";
+import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
+import { GraphQLClient } from "graphql-request";
 
 const client = new GraphQLClient("http://localhost:9000/graphql");
 
+const apolloClient = new ApolloClient({
+  uri: 'http://localhost:9000/graphql',
+  cache: new InMemoryCache(),
+})
 export async function getCompany(id) {
   const query = gql`
     query companyById($id: ID!) {
