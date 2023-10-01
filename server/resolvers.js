@@ -57,7 +57,7 @@ export const resolvers = {
   },
 
   Job: {
-    company: (job) => getCompany(job.companyId),
+    company: (job) => companyLoader.load(job.companyId),
     date: (job) => toIsoDate(job.createdAt),
   },
 };
