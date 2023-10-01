@@ -1,16 +1,19 @@
-import { useState, useEffect } from "react";
-import JobList from "../components/JobList";
-import { getJobs } from "../lib/qraphql/queries";
+import { useEffect, useState } from 'react';
+import JobList from '../components/JobList';
+import { getJobs } from '../lib/graphql/queries';
 
 function HomePage() {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    getJobs().then((jobs) => setJobs(jobs));
+    getJobs().then(setJobs);
   }, []);
-  console.log("[Homepage] jobs:", jobs);
+
+  console.log('[HomePage] jobs:', jobs);
   return (
     <div>
-      <h1 className="title">Job Board</h1>
+      <h1 className="title">
+        Job Board
+      </h1>
       <JobList jobs={jobs} />
     </div>
   );
