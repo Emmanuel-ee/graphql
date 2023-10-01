@@ -15,7 +15,7 @@ app.use(cors(), express.json(), authMiddleware);
 
 app.post('/login', handleLogin);
 
-const typeDefs = await readFile('./server/schema.graphql', 'utf8');
+const typeDefs = await readFile('./schema.graphql', 'utf8');
 
 async function getContext({ req }) {
   const companyLoader = createCompanyLoader();
